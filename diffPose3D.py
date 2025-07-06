@@ -72,9 +72,9 @@ dT12 = finalT12 * T12
 err0 = atan2(dT12[1, 0], dT12[0, 0])
 err1 = asin(-1*dT12[2, 0])
 err2 = atan2(dT12[2, 1], dT12[2, 2])
-err3 = asin(dT12[3,0])
-err4 = asin(dT12[3,1])
-err5 = asin(dT12[3,2])
+err3 = dT12[0, 3]
+err4 = dT12[1, 3]
+err5 = dT12[2, 3]
 errT12 = Matrix([err0,err1,err2,err3,err4,err5])
 
 
@@ -83,9 +83,9 @@ with open(outputName+".txt", 'w') as f:
     f.write("ValueType err0 = " + str(errT12[0].subs(initValue)) + ";\n")
     f.write("ValueType err1 = " + str(errT12[1].subs(initValue)) + ";\n")
     f.write("ValueType err2 = " + str(errT12[2].subs(initValue)) + ";\n")
-    f.write("ValueType err2 = " + str(errT12[3].subs(initValue)) + ";\n")
-    f.write("ValueType err2 = " + str(errT12[4].subs(initValue)) + ";\n")
-    f.write("ValueType err2 = " + str(errT12[5].subs(initValue)) + ";\n")
+    f.write("ValueType err3 = " + str(errT12[3].subs(initValue)) + ";\n")
+    f.write("ValueType err4 = " + str(errT12[4].subs(initValue)) + ";\n")
+    f.write("ValueType err5 = " + str(errT12[5].subs(initValue)) + ";\n")
     f.write("\n")
     def test2():
         for i in range(6):
