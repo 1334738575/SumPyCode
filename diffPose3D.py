@@ -57,17 +57,17 @@ dT2 = Rt2T(dR2, dt2)
 finalTw1 = dT1 * Tw1
 finalTw2 = dT2 * Tw2
 
-finalR1w = Matrix([
-        [finalTw1[0, 0], finalTw1[1, 0], finalTw1[2, 0]],
-        [finalTw1[0, 1], finalTw1[1, 1], finalTw1[2, 1]],
-        [finalTw1[0, 2], finalTw1[1, 2], finalTw1[2, 2]]
+finalR2w = Matrix([
+        [finalTw2[0, 0], finalTw2[1, 0], finalTw2[2, 0]],
+        [finalTw2[0, 1], finalTw2[1, 1], finalTw2[2, 1]],
+        [finalTw2[0, 2], finalTw2[1, 2], finalTw2[2, 2]]
     ])
-finalt1w = -1 * finalR1w * Matrix([finalTw1[0, 3], finalTw1[1, 3], finalTw1[2, 3]])
-finalT1w = Rt2T(finalR1w, finalt1w)
+finalt2w = -1 * finalR2w * Matrix([finalTw2[0, 3], finalTw2[1, 3], finalTw2[2, 3]])
+finalT2w = Rt2T(finalR2w, finalt2w)
 
-finalT12 = finalT1w * finalTw2
+finalT21 = finalT2w * finalTw1
 
-dT12 = finalT12 * T12
+dT12 = finalT21 * T12
 
 err0 = atan2(dT12[1, 0], dT12[0, 0])
 err1 = asin(-1*dT12[2, 0])
